@@ -10,9 +10,9 @@ public class Main {
 
         // Saudacão referente ao horário
         printSaudacao();
-        // Actually Day
+        // Dia atual
         actuallyDate();
-        // Actually Day in another time zones
+        // Dia atual em outras TimeZones ( Portugal, México & Japão )
         actuallyDateInAnotherTimeZones();
 
         // Receive another time zone
@@ -23,11 +23,13 @@ public class Main {
         //String timeZone = sc.next();
         //printDateTimeInTimeZone(location,timeZone,instant);
 
+        // Pessoa ficticia para mostrar os métodos
         String person = "Mom";
         LocalDate birthday = LocalDate.of(1981, 1, 12);
         printPersonInfo(person, 12, 1, 1981);
         printAge(person, birthday);
 
+        // Pessoa ficticia para mostrar os métodos parte DOIS
         String person2 = "Dad";
         LocalDate birthday2 = LocalDate.of(1982, 5, 28);
         printPersonInfo(person2, 28, 5, 1982);
@@ -35,6 +37,7 @@ public class Main {
 
 
     }
+    // Método statico para a classe main para printar uma saudacão referente ao horario
     private static void printSaudacao() {
         int hour = LocalDateTime.now().getHour();
         // Saudacão referente ao horario do dia
@@ -47,6 +50,7 @@ public class Main {
         }
     }
 
+    // Printa a data atual , em dia mes e ano e ambos separadamente
     private static void actuallyDate() {
         // Oque há em aspas simples e ignorado pelo simpleDateFormat. Dessa forma o JAVA Entende que são trechos literais e não tenta interpret-los
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("'Data: 'dd/MM/yyyy '& Hour: 'HH:mm:ss");
@@ -60,6 +64,7 @@ public class Main {
         System.out.println("------------------------------------");
     }
 
+    // Printar a data atual em outras Zonas do mundo  de forma interativa, recebendo dados do usuário
     private static void printDateTimeInTimeZone(String location, String timezone, Instant instant) {
         // Método suporte para actuallyDateInAnotherTimeZones
         // Oque há em aspas simples e ignorado pelo simpleDateFormat. Dessa forma o JAVA Entende que são trechos literais e não tenta interpret-los
@@ -67,7 +72,7 @@ public class Main {
         ZonedDateTime zonedDateTime = instant.atZone(ZoneId.of(timezone));
         System.out.printf("Location: %s %s%n", location, formatter.format(zonedDateTime));
     }
-
+    // Printar a data atual em outraz Zonas ser receber nenhum dado
     private static void actuallyDateInAnotherTimeZones() {
         Instant instant = Instant.now();
         System.out.println("Method actuallyDateInAnotherTimeZones: ");
@@ -76,13 +81,15 @@ public class Main {
         printDateTimeInTimeZone("Japan", "Asia/Tokyo", instant);
     }
 
+    // Printa a informacão de uma pessoa e seu dia, mes e ano de nascimento
     private static void printPersonInfo(String person, int day, int month, int year) {
         System.out.printf("Method printPersonInfo of %s%n", person);
-        System.out.println(person + "Day of birthday: " + day);
-        System.out.println(person + " Month of birthday: " + month);
-        System.out.println(person + " Year of birthday: " + year);
+        System.out.println(person + " Day of birth: " + day);
+        System.out.println(person + " Month of birth: " + month);
+        System.out.println(person + " Year of birth: " + year);
     }
 
+    // Printa resumidamente a IDADE de uma pessoa fazendo uma conta com o aniversário da pessoa e o dia atual
     private static void printAge(String person, LocalDate birthdate) {
         LocalDate now = LocalDate.now();
         //Duration age = Duration.between(birthdate,now);
